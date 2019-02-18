@@ -1,0 +1,63 @@
+
+<section id="student-details" class="py-5">
+
+
+    <div class="student">
+
+      <div class="container">
+       <div class="row">
+
+        <div class="col-md-8">
+
+            <div class="card" style="width: 18rem;">
+                <img src="../../assets/imgs/one.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                <p> Name: <span class="ml-1">Ahmed</span> </p>
+                <p>Faculty Name: <span class="ml-1">zagazig</span> </p>
+                <p>Phone: <span class="ml-1">0102255156</span> </p>
+                <p>Date of Birth: <span class="ml-1">zagazig</span> </p>
+                <p>Address: <span class="ml-1">zagazig</span> </p>
+                </div>
+              </div>        
+          
+          
+        </div>
+
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-md-12 pb-5 text-center">
+                <button class="btn btn-info edit ">Edit</button>
+            </div>
+
+            <div class="col-md-12 text-center">
+                <swal
+                #deletestudent
+                title="Are you sure?"
+                type="warning"
+                [showCancelButton]="true"
+                (confirm)="deleteFile()"
+                
+                >
+              </swal>
+              
+              <!-- Button trigger modal -->
+                <button  class="btn btn-danger delete " 
+                [swal]="deletestudent">
+                  Delete
+                </button>
+            </div>
+            
+              
+            </div>
+            
+          </div>
+
+          </div>
+
+        </div>
+
+       </div>
+
+</section>
+
+
