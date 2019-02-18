@@ -2,9 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {RouterModule,ROUTES, Routes} from '@angular/router';
-
-
-
+import {FormsModule,ReactiveFormsModule} from '@angular/forms'
+import {StudentService} from './shared/student.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,8 +13,7 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 import { AddStudentComponent } from './add-student/add-student.component';
 import { CardComponent } from './card/card.component';
 import { HomeComponent } from './home/home.component';
-import {ReactiveFormsModule} from '@angular/forms';
-import {StudentService} from './shared/student.service';
+
 
 
 const appRoutes:Routes = 
@@ -41,7 +39,8 @@ const appRoutes:Routes =
     AppRoutingModule,
     SweetAlert2Module.forRoot(),
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
     
     
     

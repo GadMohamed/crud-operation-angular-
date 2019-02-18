@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddStudentComponent implements OnInit {
 
+
+log(x){
+  console.log(x);
+}
+
   constructor() { }
 
   ngOnInit() {

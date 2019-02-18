@@ -2,40 +2,42 @@
 
 <div class="container">
 
-    
+    <form class="text-center border border-light p-5">
 
         <p class="h4 mb-4">Add Student</p>
     
-        <div class="form-row mb-4">
-            <div class="col">
-                <!-- First name -->
-                <input type="text"  class="form-control" placeholder="First name">
-            </div>
-            <div class="col">
-                <!-- Last name -->
-                <input type="text"  class="form-control" placeholder="Last name">
-            </div>
+        <!-- Student Name -->
+        <input type="text" required  minlength="3" max length="100" pattern="[A-Za-z]{3,100}" ngModel name="studentName" #studeNtname="ngModel" (click)="log(studeNtname)" class="form-control mt-4" placeholder="Student Name">
+        <div class="alert alert-danger" *ngIf="studeNtname.touched && !studeNtname.valid" >
+          <div *ngIf="studeNtname.errors.required">Name is requied </div>
+          <div *ngIf="studeNtname.errors.minlength">Name min legnth 3 </div>
+          <div *ngIf="studeNtname.errors.pattern">Name dosenot match pattern </div>
         </div>
-    
+
         <!-- Address -->
-        <input type="text" id="" class="form-control mb-4" placeholder="Address">
+        <input type="text" id="" class="form-control mt-4" placeholder="Address">
+        
     
         <!-- Faculty -->
-        <input type="text" id="" class="form-control" placeholder="Faculty Name" >
-        <small id="" class="form-text text-muted mb-4">
-            At least 8 characters 
-        </small>
+        <input type="text" required ngModel  name="Faculty" minlength="3" max length="100" pattern="[A-Za-z]{3,100}" #faculty="ngModel" class="form-control mt-4" placeholder="Faculty Name" >
+        <div class="alert alert-danger" *ngIf="faculty.touched && !faculty.valid" >
+            <div *ngIf="faculty.errors.required">Fculty Name is requied </div>
+            <div *ngIf="faculty.errors.minlength"> Fculty Name min legnth 3 </div>
+            <div *ngIf="faculty.errors.pattern">Fculty Name dosenot match pattern </div>
+        </div>
     
         <!-- Phone number -->
-        <input type="text" id="" class="form-control" placeholder="Phone number" >
-        <small id="" class="form-text text-muted mb-4">
-            At least 8 digit 
-        </small>
+        <input type="text" required ngModel name="studentphone"  pattern="\d{14}" #studentphone="ngModel" class="form-control mt-4 " placeholder="Phone number" >
+        <div class="alert alert-danger" *ngIf="studentphone.touched && !studentphone.valid" >
+            <div *ngIf="studentphone.errors.required">Phone Numbers  is requied </div>
+            <div *ngIf="studentphone.errors.pattern">Phone Should be Number And 14 digit length</div>
+        </div>
+
         <!-- Date Of Birth -->
-        <input type="date" id="" class="form-control mb-4" placeholder="Date Of Birth " >
+        <input type="date" id="" class="form-control mt-4" placeholder="Date Of Birth " >
 
         <!-- Image -->
-        <input type="file" id="" class="form-control mb-4" placeholder="Image " accept="image/*" >
+        <input type="file" id="" class="form-control mt-4" placeholder="Image " accept="image/*" >
         
         <div class="buttons-save float-left">
             <swal
@@ -54,7 +56,7 @@
     <div class="clearfix"></div>
         
        
-        
+  </form>    
     
     
 
