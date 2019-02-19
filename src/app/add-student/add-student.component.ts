@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentService } from '../shared/student.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-student',
@@ -8,13 +10,31 @@ import { Component, OnInit } from '@angular/core';
 export class AddStudentComponent implements OnInit {
 
 
-log(x){
-  console.log(x);
-}
-
-  constructor() { }
+  constructor(private service : StudentService) { }
 
   ngOnInit() {
+
+    this.resetForm();
   }
+
+resetForm(form? : NgForm)
+{
+
+  if(form != null)
+  form.resetForm();
+  this.service.formData = {
+    
+    id:null,
+    name:'',
+    facultyName:'',
+    address:'',
+    phone:'',
+    dateOFBirth:null,
+    image:'',
+
+  };
+
+};
+
 
 }

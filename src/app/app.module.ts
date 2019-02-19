@@ -4,6 +4,8 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {RouterModule,ROUTES, Routes} from '@angular/router';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms'
 import {StudentService} from './shared/student.service';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +15,7 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 import { AddStudentComponent } from './add-student/add-student.component';
 import { CardComponent } from './card/card.component';
 import { HomeComponent } from './home/home.component';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -40,12 +43,14 @@ const appRoutes:Routes =
     SweetAlert2Module.forRoot(),
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
     
     
     
   ],
-  providers: [StudentService,],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
