@@ -40,8 +40,13 @@ resetForm(form? : NgForm)
 
 onSubmit(form : NgForm)
 {
-  let data = form.value;
+  let data = Object.assign({},form.value) ;
+  delete data.id;
+  if(form.value.id == null)
   this.fireStore.collection('student').add(data);
+  else 
+  this.fireStore.doc('student/'+form.value.id).update(data);
+
   this.resetForm(form);
   this.toastr.success('Added Successfully ', 'Student');
 }
