@@ -1,0 +1,28 @@
+<div class="container">
+<table class="table table-hover">
+
+  <thead>
+      <th>name</th>
+      <th>address</th> 
+      <th>phone</th> 
+      <th>faculty</th> 
+      <th>date of birth</th>  
+  </thead>
+  <tbody>
+
+
+<tr *ngFor="let st of list">
+  <td (click)="onEdit(st)">{{st.studentName}}</td>
+  <td (click)="onEdit(st)">{{st.studentAddress}}</td>
+  <td (click)="onEdit(st)">{{st.studentphone}}</td>
+  <td (click)="onEdit(st)">{{st.Faculty}}</td>
+  <td (click)="onEdit(st)">{{st.studentBirthDay|date}}</td>
+  <td><a class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+</tr>
+
+
+
+  </tbody>
+
+</table>
+</div>

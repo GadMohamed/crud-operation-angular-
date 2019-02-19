@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../shared/student.service';
 import { NgForm } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-student',
@@ -10,7 +12,7 @@ import { NgForm } from '@angular/forms';
 export class AddStudentComponent implements OnInit {
 
 
-  constructor(private service : StudentService) { }
+  constructor(private service : StudentService,private fireStore : AngularFirestore,private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -25,16 +27,25 @@ resetForm(form? : NgForm)
   this.service.formData = {
     
     id:null,
-    name:'',
-    facultyName:'',
-    address:'',
-    phone:'',
-    dateOFBirth:null,
+    studentName:'',
+    Faculty:'',
+    studentAddress:'',
+    studentphone:'',
+    studentBirthDay:null,
     image:'',
 
   };
 
 };
+
+onSubmit(form : NgForm)
+{
+  let data = form.value;
+  this.fireStore.collection('student').add(data);
+  this.resetForm(form);
+  this.toastr.success('Added Successfully ', 'Student');
+}
+
 
 
 }

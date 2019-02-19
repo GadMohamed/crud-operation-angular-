@@ -5,7 +5,9 @@ import {RouterModule,ROUTES, Routes} from '@angular/router';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms'
 import {StudentService} from './shared/student.service';
 import {AngularFireModule} from '@angular/fire';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFirestoreModule,FirestoreSettingsToken} from '@angular/fire/firestore';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,7 @@ import { AddStudentComponent } from './add-student/add-student.component';
 import { CardComponent } from './card/card.component';
 import { HomeComponent } from './home/home.component';
 import { environment } from 'src/environments/environment';
+import { TestComponent } from './test/test.component';
 
 
 
@@ -35,7 +38,8 @@ const appRoutes:Routes =
     StudentDetailsComponent,
     AddStudentComponent,
     CardComponent,
-    HomeComponent
+    HomeComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -45,12 +49,14 @@ const appRoutes:Routes =
     ReactiveFormsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot()
     
     
     
   ],
-  providers: [StudentService],
+  providers: [StudentService,{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
